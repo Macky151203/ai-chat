@@ -70,7 +70,7 @@ export default function Register() {
         <div className="text-center p-4 md:mt-14">
           <div className="text-2xl font-bold p-4">Easy login</div>
           <p className="p-2 text-xl">
-            Enter your email address, check your inbox after clicking on login, and get in .
+            Using your google account
           </p>
 
         </div>
