@@ -11,7 +11,7 @@ const openai = new OpenAIApi(config)
 // IMPORTANT! Set the runtime to edge
 export const runtime = 'edge'
 
-export async function POST(req: Request) {
+export async function POST(req) {
   // Extract the `prompt` from the body of the request
   const { messages } = await req.json()
 
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
   const response = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo',
     stream: true,
-    messages: messages.map((message: any) => ({
+    messages: messages.map((message) => ({
       content: message.content,
       role: message.role
     }))
