@@ -1,33 +1,37 @@
 'use client';
-
-
 import { useChat } from 'ai/react'
-
 import { useState, useEffect } from 'react'
-// import supabase from '../../supabase'
 import Sidebar from '../components/sidebar'
-
-
-
+import { getAuth } from 'firebase/auth'
+import { app,database } from '@/firebaseconfig'
+import { collection, query, where, addDoc, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
 
 
 export default function Chat() {
-  // const [name,setname]=useState('')
-  // const onAuthStateChange = async () => {
-  //   try {
-  //     const { data: { user }, } = await supabase.auth.getUser();
-  //     console.log(user.email)
-  //     // setname(user.email)
+  const databaseref = collection(database, "aiapp")
+    const auth=getAuth()
+    const[username,setusername]= useState('')
+    useEffect(()=>{
+      const user=auth.currentUser
+      setusername(user.displayName)
+    })
+  
 
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-  // useEffect(() => {
-  //   onAuthStateChange();
-  // }, []);
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    onFinish:async(message)=>{
+      
+      const user=auth.currentUser
+      const uid=user.uid
+      await addDoc(databaseref,{
+        prompt:input,
+        message:message,
+        uid:uid,
 
-  const { messages, input, handleInputChange, handleSubmit } = useChat()
+      }).catch((err)=>{
+        console.log(err)
+      })
+    }
+  })
     
 
   
@@ -43,9 +47,9 @@ export default function Chat() {
   return (
     // <Suspense fallback={Loading}></Suspense>
     <div className=' h-full flex flex-row'>
-      <Sidebar />
+      <Sidebar name={username} />
 
-      <div className="flex flex-col md:w-3/4 p-4  md:left-1/4 md:relative px-12 py-12 mr-12">
+      <div className="flex flex-col md:w-3/4 p-4  md:left-1/4 relative top-12 px-12 py-12 mr-12">
         {messages.length > 0
           ? messages.map(m => (
             <div key={m.id} className="whitespace-pre-wrap py-1 ">
