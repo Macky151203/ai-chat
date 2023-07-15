@@ -66,7 +66,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="from-amber-200 bg-gradient-to-b h-full flex flex-col">
+      <div className="from-cyan-300 bg-gradient-to-b h-full flex flex-col">
         <div className="text-center p-4 md:mt-14">
           <div className="text-2xl font-bold p-4">Easy login</div>
           <p className="p-2 text-xl">

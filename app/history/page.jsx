@@ -1,12 +1,30 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { app, database } from '@/firebaseconfig'
+import { getAuth } from 'firebase/auth'
+import { collection, query, where, addDoc, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
+import Sidebar from '../components/sidebar';
 // import supabase from '../../supabase'
 export default function History() {
 
     const [data, setdata] = useState([]);
-    const [resp, setresp] = useState([]);
+    const [name, setname] = useState('');
+    const auth=getAuth();
+    useEffect(()=>{
+        getdata();
+    })
 
-    const getprompt = async () => {
+    const getdata = async () => {
+        const user=auth.currentUser
+        setname(user.displayName)
+        const uid=user.uid
+        const q=query(collection(database,"aiapp"),where("uid","==",uid));
+        await getDocs(q).then((response)=>{
+            setdata(response.docs.map((elem)=>{
+                return {...elem.data(),id:elem.id}
+            }))
+        })
+        
         // try {
         //     let { data, error } = await supabase.from('prompts').select('prompt');
         //     setdata(data)
@@ -15,56 +33,34 @@ export default function History() {
         // }
         console.log("printing prompts")
     }
-    const getresp= async()=>{
-        // try{
-        //     let {data,error}= await supabase.from('response').select('response');
-        //     setresp(data)
-
-        // }catch(error){
-        //     console.log(error)
-        // }
-        console.log("printing resp")
-    }
+    
 
     return (
         <>
-            <div className='flex flex-col ml-12 justify-center items-center space-y-12'>
-                <div className='rounded-md w-4/5  bg-red-500 '>
-                    <div>
-                        <button onClick={getprompt}>Read prompt</button>
-                    </div>
-                    <div>
+           <div className='flex flex-row'>
+            <Sidebar name={name}/>
+
+           <div className='flex flex-col  md:w-3/4 justify-center items-center md:left-1/4 relative mt-20'>
+                <div className='rounded-md w-4/5 '>
+                    {/* <div>
+                        <button onClick={getdata}>Read prompt</button>
+                    </div> */}
+                    <div className='flex flex-col space-y-3'>
                         {data && data.map((dat) => {
                             return (
                                 <>
-                                    <div key={dat}>
-                                        <div>{dat.prompt}</div>
+                                    <div className='shadow-md flex flex-col p-2' key={dat}>
+                                        <div className=''><span>{name}: </span>{dat.prompt}</div>
+                                        <div className=''><span>Ai: </span>{dat.message.content}</div>
                                     </div>
                                 </>
                             )
                         })}
                     </div>
                 </div>
-                <div className='bg-amber-500 rounded-md w-4/5'>
-                <div>
-                        <button onClick={getresp}>Read resp </button>
-                    </div>
-                    <div>
-                        {resp && resp.map((dat) => {
-                            return (
-
-                                <>
-                                    <div key={dat}>
-                                        <div>{dat.response}</div>
-                                    </div>
-                                </>
-
-
-                            )
-                        })}
-                    </div>
-                </div>
+               
             </div>
+           </div>
 
         </>
     )
