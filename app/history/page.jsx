@@ -37,10 +37,10 @@ export default function History() {
 
     return (
         <>
-           <div className='flex flex-row'>
-            <Sidebar name={name}/>
+           <div className='flex flex-col md:flex-row '>
+            <Sidebar  name={name}/>
 
-           <div className='flex flex-col  md:w-3/4 justify-center items-center md:left-1/4 relative mt-20'>
+           <div className='flex flex-col  md:w-3/4 justify-center items-center md:left-1/4 relative mt-4 md:mt-20'>
                 <div className='rounded-md w-4/5 '>
                     {/* <div>
                         <button onClick={getdata}>Read prompt</button>
@@ -49,9 +49,9 @@ export default function History() {
                         {data && data.map((dat) => {
                             return (
                                 <>
-                                    <div className='shadow-md flex flex-col p-2' key={dat}>
-                                        <div className=''><span>{name}: </span>{dat.prompt}</div>
-                                        <div className=''><span>Ai: </span>{dat.message.content}</div>
+                                    <div className='shadow-md rounded-md flex flex-col p-2' key={dat}>
+                                        <div className=''><span className='font-semibold'>{name}: </span>{dat.prompt}</div>
+                                        <div className=''><span className='font-semibold'>Ai: </span>{dat.message.content}</div>
                                     </div>
                                 </>
                             )

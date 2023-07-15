@@ -46,7 +46,7 @@ export default function Chat() {
 
   return (
     // <Suspense fallback={Loading}></Suspense>
-    <div className=' h-full flex flex-row'>
+    <div className=' h-full flex flex-col md:flex-row'>
       <Sidebar name={username} />
 
       <div className="flex flex-col md:w-3/4 p-4  md:left-1/4 relative top-12 px-12 py-12 mr-12">
