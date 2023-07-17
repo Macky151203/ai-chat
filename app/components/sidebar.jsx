@@ -33,7 +33,7 @@ export default function Sidebar({ name }) {
           <div>Welcome {name}</div>
           < AiOutlineMenu className="md:hidden hover:cursor-pointer" onClick={()=>setopen(!open)} />
         </div>
-        <div className={`py-8  space-y-4 ${!open?'hidden':''} transition ease-in-out duration-75 delay-100 md:flex flex-col justify-center items-start`}>
+        <div className={`py-8   ${!open?'hidden':''} transition ease-in-out duration-75 delay-100 md:flex flex-col justify-center items-start`}>
           <div className={`py-4 w-full  ${routes[0].active?`bg-gray-800`:``} cursor-pointer flex flex-row justify-start items-center pl-4`}><div><AiFillHome /></div><div className='px-4'><div onClick={()=>{router.push('/maincomp')}}>Chat with AI</div></div></div>
           <div className={`py-4 w-full ${routes[1].active?`bg-gray-800`:``}  cursor-pointer flex flex-row justify-start items-center pl-4`}><div>< IoIosContact /></div><div onClick={()=>{router.push('/profile')}} className='px-4'>Profile</div></div>
           <div className={`py-4 w-full ${routes[2].active?`bg-gray-800`:``}  cursor-pointer flex flex-row justify-start items-center pl-4`}><div ><BsClockHistory className="text-white" /></div><div onClick={() => { router.push('/history') }} className='px-4'>History</div></div>

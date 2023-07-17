@@ -49,9 +49,10 @@ export default function History() {
                         {data && data.map((dat) => {
                             return (
                                 <>
-                                    <div className='shadow-md rounded-md flex flex-col p-2' key={dat}>
-                                        <div className=''><span className='font-semibold'>{name}: </span>{dat.prompt}</div>
-                                        <div className=''><span className='font-semibold'>Ai: </span>{dat.message.content}</div>
+                                    <div className='shadow-md rounded-md space-y-2  flex flex-col p-2' key={dat}>
+                                        <div className='flex flex-row space-x-1 items-center'><div className='font-semibold'>{name}: </div><div className={`${dat.message.role!=='assistant'?`w-3/4`:``}bg-slate-500 p-2 rounded-md w-full`}>{dat.prompt}</div></div>
+                                        <div className='flex flex-row space-x-1 items-center'><div className='font-semibold'>Ai: </div><div className={`${dat.message.role!=='assistant'?`w-3/4`:``}bg-slate-500 p-2 rounded-md w-full`}>{dat.message.content}</div></div>
+                                        {/* <div className='p-2 px-2 bg-slate-500 rounded-md'><span className='font-semibold'>Ai: </span>{dat.message.content}</div> */}
                                     </div>
                                 </>
                             )
