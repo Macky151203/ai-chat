@@ -69,7 +69,7 @@ export default function Register() {
   return (
     <>
 
-      <div className='flex flex-col h-screen  bg-gray-800'>
+      <div className='flex flex-col min-h-screen  bg-gray-800'>
         <div className='text-2xl ml-4 mt-4 md:ml-8 md:mt-8 text-white flex  justify-start'>
             <div>AI chat bot</div>
         </div>

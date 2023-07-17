@@ -23,7 +23,7 @@ export default function Profile() {
         <>
             <div className="flex flex-col md:flex-row">
                 <Sidebar name={name} />
-                <div className='flex flex-col md:w-3/4 justify-start bg-gray-800 min-h-screen items-start md:left-1/4 relative pt-4 md:pt-20'>
+                <div className='flex flex-col md:w-3/4 items-center md:justify-start bg-gray-800 min-h-screen md:items-start md:left-1/4 relative pt-4 md:pt-20'>
                         <div className='bg-gray-800 text-white md:w-1/2  flex flex-col justify-center items-center md:justify-start md:items-start p-1 md:ml-12 rounded-lg'>
                             <div className='text-lg mt-4 font-bold'>
                                 Profile picture
@@ -31,7 +31,7 @@ export default function Profile() {
                             <div>
                             <Image className='rounded-full mt-4' src={profile} width={150} height={150} />
                             </div>
-                            <div className=' text-lg mt-4 text-center'>
+                            <div className=' text-lg mt- font-bold text-center'>
                                 Username
                             </div>
                             <div className='text-center'>
