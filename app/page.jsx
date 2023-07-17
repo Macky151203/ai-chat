@@ -3,6 +3,8 @@ import { useState } from 'react'
 // import supabase from '../supabase'
 import { useRouter } from 'next/navigation'
 import { app } from '@/firebaseconfig'
+import Image from 'next/image';
+import hero from '../images/hero.png'
 
 
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
@@ -66,29 +68,22 @@ export default function Register() {
 
   return (
     <>
-      <div className="from-cyan-300 bg-gradient-to-b h-full flex flex-col">
-        <div className="text-center p-4 md:mt-14">
-          <div className="text-2xl font-bold p-4">Easy login</div>
-          <p className="p-2 text-xl">
-            Using your google account
-          </p>
 
+      <div className='flex flex-col h-screen  bg-gray-800'>
+        <div className='text-2xl ml-4 mt-4 md:ml-8 md:mt-8 text-white flex  justify-start'>
+            <div>AI chat bot</div>
         </div>
-
-        <div className='flex flex-col justify-center items-center'>
-          <div className="md:w-1/4  auth-widget">
-            <div className='flex flex-col space-y-4 justify-center items-center'>
-
-              {/* <input className='shadow-md rounded-md p-2 w-56' placeholder='example@mail.com' type='email' name='email' onChange={(e) => setemail(e.target.value)} />
-<input className='shadow-md rounded-md p-2 w-56' placeholder='password' type='email' name='password' onChange={(e) => setpassword(e.target.value)} /> */}
-              <div className='flex flex-row space-x-2'>
-                <button className='shadow-md rounded-md text-white px-4 hover:bg-green-400 p-2  bg-green-500' onClick={signUpWithGoogle}>Login</button>
-                {/* <button className='shadow-md rounded-md text-white px-4 hover:bg-green-400 p-2  bg-green-500' onClick={signup}>Sign up</button> */}
-              </div>
-            </div>
+        <div className='flex flex-row justify-between items-center flex-wrap-reverse'>
+          <div className='flex flex-col ml-4 md:ml-12 text-white space-y-2'>
+            <div className='text-2xl'>Please login with your google account to continue...</div>
+            <div><button onClick={signUpWithGoogle} className='rounded-sm bg-transparent border-2 border-white p-1 px-4 hover:bg-white hover:text-black'>Login</button></div>
+          </div>
+          <div>
+            <Image src={hero} />
           </div>
         </div>
       </div>
+
     </>
   )
 

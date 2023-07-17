@@ -46,27 +46,27 @@ export default function Chat() {
 
   return (
     // <Suspense fallback={Loading}></Suspense>
-    <div className=' h-full flex flex-col md:flex-row'>
+    <div className='  flex flex-col  md:flex-row '>
       <Sidebar name={username} />
 
-      <div className="flex flex-col md:w-3/4 p-4  md:left-1/4 relative top-12 px-12 py-12 mr-12">
+      <div className="flex flex-col w-full md:w-3/4 p-4 text-white bg-gray-800 min-h-screen  md:left-1/4 relative  md:px-12 py-12 mr-12">
         {messages.length > 0
           ? messages.map(m => (
-            <div key={m.id} className="whitespace-pre-wrap py-1 m-1 shadow-sm ">
+            <div key={m.id} className="whitespace-pre-wrap items-center flex py-1 m-1 shadow-sm ">
 
-              {m.role === 'user' ? `${username}: ` : 'AI: '}
-              {m.content}
+            {m.role === 'user' ? `${username}: ` : 'AI: '}
+              <div className={`p-2 px-2 bg-slate-500 rounded-md  ${m.role==='user'?`w-3/4`:'w-full'} `}>{m.content}</div>
 
 
             </div>
           ))
           : null}
 
-        <form onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
           <input
-            className="fixed bottom-0 md:w-1/2 w-3/5 p-2 ml-6 mb-8 border border-gray-300 rounded shadow-xl"
+            className="fixed bottom-0 md:w-1/2 w-4/5 p-2 ml-3 md:ml-6 mb-8 placeholder-white bg-slate-500 text-white border-gray-300 rounded shadow-xl"
             value={input}
-            placeholder="Say something..."
+            placeholder="Write your prompt..."
             onChange={handleInputChange}
           />
         </form>

@@ -37,10 +37,10 @@ export default function History() {
 
     return (
         <>
-           <div className='flex flex-col md:flex-row '>
+           <div className='flex flex-col md:flex-row'>
             <Sidebar  name={name}/>
 
-           <div className='flex flex-col  md:w-3/4 justify-center items-center md:left-1/4 relative mt-4 md:mt-20'>
+           <div className='flex flex-col  md:w-3/4 justify-center text-white bg-gray-800 min-h-screen items-center md:left-1/4 relative pt-4 md:pt-20'>
                 <div className='rounded-md w-4/5 '>
                     {/* <div>
                         <button onClick={getdata}>Read prompt</button>
