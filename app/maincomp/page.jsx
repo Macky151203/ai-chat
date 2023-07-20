@@ -53,8 +53,10 @@ export default function Chat() {
         {messages.length > 0
           ? messages.map(m => (
             <div key={m.id} className="whitespace-pre-wrap items-start  flex py-1 m-1 shadow-sm ">
+              
 
-            {m.role === 'user' ? `${username}: ` : 'AI: '}
+            
+            <div className='mt-2'>{m.role === 'user' ? `${username}: ` : 'AI: '}</div>
               <div className={`p-2 px-2 bg-slate-500 rounded-md   ${m.role==='user'?`w-3/4`:'w-full'} `}>{m.content}</div>
 
 

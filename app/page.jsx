@@ -73,10 +73,10 @@ export default function Register() {
         <div className='text-2xl ml-4 mt-4 md:ml-8 md:mt-8 text-white flex  justify-start'>
             <div>AI chat bot</div>
         </div>
-        <div className='flex flex-row justify-between items-center flex-wrap-reverse'>
-          <div className='flex flex-col ml-4 md:ml-12 text-white space-y-2'>
-            <div className='text-2xl'>Please login with your google account to continue...</div>
-            <div><button onClick={signUpWithGoogle} className='rounded-sm bg-transparent border-2 border-white p-1 px-4 hover:bg-white hover:text-black'>Login</button></div>
+        <div className='flex flex-col-reverse md:flex-row justify-center items-center '>
+          <div className='flex flex-col ml-4 md:ml-12 text-white space-y-4'>
+            <div className='text-2xl md:text-5xl'>Please login with your google account to continue...</div>
+            <button onClick={signUpWithGoogle} className=' rounded-sm text-xl bg-transparent border-2 w-fit border-white p-1 px-4 hover:bg-white hover:text-black'>Login</button>
           </div>
           <div>
             <Image src={hero} />
