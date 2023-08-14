@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  include: ['loading.js']
+}
 
 module.exports = nextConfig
 module.exports = {
