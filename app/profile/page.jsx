@@ -31,7 +31,7 @@ export default function Profile() {
                             <div>
                             <Image className='rounded-full mt-4' src={profile} width={150} height={150} />
                             </div>
-                            <div className=' text-lg mt- font-bold text-center'>
+                            <div className=' text-lg mt-4 font-bold text-center'>
                                 Username
                             </div>
                             <div className='text-center'>
