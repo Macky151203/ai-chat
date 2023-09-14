@@ -4,10 +4,17 @@ import { app, database } from '@/firebaseconfig'
 import { getAuth } from 'firebase/auth'
 import { collection, query, where, addDoc, getDocs, doc, updateDoc, deleteDoc, orderBy } from "firebase/firestore";
 import Sidebar from '../components/sidebar';
-import Loading from '../components/loading'
-import Show from '../components/show'
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
+
+
 // import supabase from '../../supabase'
+const Show=React.lazy(()=>{
+    return new Promise(resolve=>{
+        setTimeout(()=>{
+            resolve(import('../components/show'))
+        },2000)
+    })
+})
 export default function History() {
 
     const [data, setdata] = useState([]);
@@ -22,6 +29,7 @@ export default function History() {
         setname(user.displayName)
         const uid=user.uid
         const q=query(collection(database,"aiapp"),where("uid","==",uid));
+    
         
         await getDocs(q).then((response)=>{
             setdata(response.docs.map((elem)=>{
@@ -53,7 +61,9 @@ export default function History() {
                         {data && data.map((dat) => {
                             return (
                                 <>
-                                    <Suspense fallback={<Loading />}>
+                                    <Suspense fallback={<div className='w-full h-12 bg-slate-300 animate-pulse rounded-lg'>
+                                        
+                                    </div>}>
                                     <Show dat={dat} name={name} />
                                     </Suspense>
                                     

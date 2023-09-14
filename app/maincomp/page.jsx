@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Sidebar from '../components/sidebar'
 import { getAuth } from 'firebase/auth'
 import { app,database } from '@/firebaseconfig'
+import { sendEmailVerification } from 'firebase/auth';
 import { collection, query, where, addDoc, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
 
 
@@ -12,8 +13,17 @@ export default function Chat() {
     const auth=getAuth()
     const[username,setusername]= useState('')
     useEffect(()=>{
+      
       const user=auth.currentUser
+      // const mesg={
+      //   to:user.email,
+      //   subject:"chumma",
+      //   body:"hiii welcoe"
+
+      // }
+
       setusername(user.displayName)
+      // sendEmailVerification(mesg)
     })
   
 
