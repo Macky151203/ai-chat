@@ -64,6 +64,18 @@ export default function Register() {
     }
   }
 
+  const sendreq=async()=>{
+    const req=await fetch('/api/groq',{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({nam:"yg"})
+    })
+    const data=await req.json()
+    console.log(data)
+  }
+
 
 
   return (
@@ -77,6 +89,7 @@ export default function Register() {
           <div className='flex flex-col ml-4 md:ml-12 text-white space-y-4'>
             <div className='text-2xl md:text-5xl'>Please login with your google account to continue...</div>
             <button onClick={signUpWithGoogle} className=' rounded-sm text-xl bg-transparent border-2 w-fit border-white p-1 px-4 hover:bg-white hover:text-black'>Login</button>
+            {/* <button onClick={sendreq} className=' rounded-sm text-xl bg-transparent border-2 w-fit border-white p-1 px-4 hover:bg-white hover:text-black'>Send</button> */}
           </div>
           <div>
             <Image src={hero} />
