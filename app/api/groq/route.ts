@@ -5,12 +5,14 @@ const groq = new Groq({ apiKey: 'gsk_za9IHWrqsu6d8HdXJYNAWGdyb3FY3IY9kuOPwX83z74
 
 export async function POST(req:NextRequest) {
 
+  const {content}=await req.json()
+
   async function getGroqChatCompletion() {
     return groq.chat.completions.create({
       messages: [
         {
           role: "user",
-          content: "what is full for of bmw , give me one line answer?",
+          content: content,
         },
       ],
       model: "llama-3.3-70b-versatile",
@@ -23,8 +25,8 @@ export async function POST(req:NextRequest) {
     return chatCompletion.choices[0]?.message?.content
   }
   const rq=await main()
-  console.log("the res is - ",rq)
-  return NextResponse.json({msg:"okk"})
+  // console.log("the res is - ",rq)
+  return NextResponse.json({msg:rq})
   
   
 }

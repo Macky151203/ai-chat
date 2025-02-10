@@ -65,15 +65,7 @@ export default function Register() {
   }
 
   const sendreq=async()=>{
-    const req=await fetch('/api/groq',{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({nam:"yg"})
-    })
-    const data=await req.json()
-    console.log(data)
+    
   }
 
 
